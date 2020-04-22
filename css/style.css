@@ -42,8 +42,8 @@ p {
 
 img {
 	max-width: 100%;
-	border-radius: 50%;
 }
+
 
 input:focus,
 select:focus,
@@ -67,6 +67,9 @@ ol {
 /*---------------------
 	Helper CSS
 -----------------------*/
+.profile img{
+	border-radius: 50%;
+}
 .spad {
 	padding-top: 25px;
 	padding-bottom: 110px;

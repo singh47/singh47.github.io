@@ -75,6 +75,10 @@ $(window).on('load', function() {
 		type: 'image',
 		mainClass: 'img-popup-warp',
 		removalDelay: 500,
+
+		image: {
+			titleSrc: 'title'
+		}
 	});
 
 
