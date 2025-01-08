@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Developing RTOS for Activity Trackers</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Insights into building a custom RTOS for pet activity trackers using Zephyr, lessons learned, and key takeaways for hardware and software developers.">
+    <meta name="keywords" content="RTOS, Zephyr, firmware development, pet activity trackers, product development, hardware startups">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->   
+    <link href="img/favicon.ico" rel="shortcut icon"/>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i,700" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        h1 {
+            text-align: center;
+            color: #555;
+            margin-top: 50px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Developing RTOS</h1>
+        <p>We developed the RTOS (Real-Time Operating System) for our activity trackers using the Zephyr kernel and its libraries. This is another lesson I learned the hard way by spending too much time developing a system that wasn't essential.</p>
+
+        <p>As a software developer working on the side to develop pet activity trackers, I wanted our software stack to be top-notch (much like many other developers when they start building their first product or startup). When it comes to firmware development, there were official SDKs from each chip manufacturer, but we chose to go with our own RTOS based on Zephyr. Why Zephyr? Because of its Linux Foundation backing, support for multiple protocols, lightweight kernel, OS APIs, and examples of complex OS features in their documentation 😊.</p>
+
+        <p>I found a great developer remotely who was an expert in Zephyr. As he started building, the more features he added—around Messaging Queues, Semaphores, OS Threads, Mutexes, NVM storage, and DTS bindings—the more I fell in love with RTOS development.</p>
+
+        <p>It took us a few months to develop a stable OS for our devices. We were slowed down by faults in our PCBs, faulty sensors, and other similar hardware problems. After those months, my favorite OS developer found a better opportunity near his hometown. I posted locally to find another Zephyr developer, expecting not to find many who use it. I ended up continuing the development, including minor fixes, on my own.</p>
+
+        <p>When it was time for mass production, I unfortunately—or perhaps fortunately—canceled the contract with our current hardware manufacturer due to the number of faults in each prototype and a significant communication gap. Switching to a different manufacturer, who already had similar devices, allowed us to adopt their PCB designs with minimal changes. Now, the MCU, sensors, battery—everything has changed, and Zephyr wasn't compatible with this new MCU! 🙀</p>
+
+        <p>For our second firmware, we (I managed to rehire the same developer) developed it in just a few weeks instead of months by switching to official SDKs. This eliminated the need to manage custom queues, semaphores, multiple threads, mutex locks, device bindings, custom OTA, and the BLE stack, etc. The SDK managed all these features, and only two threads were sufficient to accomplish what we actually needed. It also handled OTA and the BLE stack on its own. 🙏</p>
+
+        <p>Building our custom RTOS for activity trackers was an overly innovative solution. RTOS might be necessary for applications like self-driving vehicles, military devices, or handheld devices with thousands of features! However, activity tracking can be efficiently managed using built-in SDK drivers and functions.</p>
+
+        <p>Lessons like these elevated my software and product development skills to the next level, but they also delayed our product development timelines. I am sharing these insights one by one, hoping they will be helpful for upcoming hardware or software startup founders.</p>
+
+        <p>Say hello or read more posts like this at <a href="https://linkedin.com/in/harmansingh">my LinkedIn profile</a> and the activity tracker we built is <a href="https://www.petdrifts.com/products/petdrifts-lite-smart-collar">PetDrifts Lite</a></p>
+        <div class="footer">&copy; 2025 Harman Singh. All rights reserved.</div>
+    </div>
+</body>
+</html>
